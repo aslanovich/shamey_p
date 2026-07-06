@@ -4,23 +4,6 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { TG_URL } from "@/lib/site";
 
-/** Одна секция бесшовной волны (стыкуется сама с собой по горизонтали) */
-function Wave() {
-  return (
-    <svg
-      viewBox="0 0 1200 60"
-      preserveAspectRatio="none"
-      className="h-full w-1/2 shrink-0"
-      aria-hidden
-    >
-      <path
-        d="M0,30 C100,55 200,55 300,30 S500,5 600,30 S800,55 900,30 S1100,5 1200,30 L1200,60 L0,60 Z"
-        fill="var(--color-porcelain)"
-      />
-    </svg>
-  );
-}
-
 /**
  * Hero со scroll-переходом: секция выше экрана, контент прилипает.
  * По умолчанию фото чистое; по мере скролла нарастают блюр и заливка
@@ -49,8 +32,8 @@ export default function Hero() {
     };
 
     const loop = () => {
-      // инерция: высота плавно догоняет скролл
-      cur += (target - cur) * (reduced ? 1 : 0.09);
+      // инерция: высота плавно, «волной», догоняет скролл
+      cur += (target - cur) * (reduced ? 1 : 0.06);
       if (Math.abs(target - cur) < 0.001) cur = target;
       veil.style.height = `${(cur * 150).toFixed(2)}%`;
       veil.style.opacity = cur > 0.005 ? "1" : "0";
@@ -120,28 +103,13 @@ export default function Hero() {
           />
         </div>
 
-        {/* Вуаль: поднимается снизу волной, высота растёт по скроллу */}
+        {/* Вуаль: мягкий градиент, поднимается снизу с инерцией */}
         <div
           ref={veilRef}
           aria-hidden
           className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-0 opacity-0"
         >
-          {/* мягкая дымка над волной */}
-          <div className="absolute -top-32 h-32 w-full bg-gradient-to-t from-porcelain/60 to-transparent" />
-          {/* две дрейфующие волны в противофазе */}
-          <div className="absolute -top-14 h-14 w-full overflow-hidden opacity-60">
-            <div className="wave-track wave-track--slow">
-              <Wave />
-              <Wave />
-            </div>
-          </div>
-          <div className="absolute -top-10 h-10 w-full overflow-hidden">
-            <div className="wave-track">
-              <Wave />
-              <Wave />
-            </div>
-          </div>
-          {/* сплошная заливка */}
+          <div className="absolute -top-40 h-40 w-full bg-gradient-to-t from-porcelain to-transparent" />
           <div className="absolute inset-0 bg-porcelain" />
         </div>
       </div>

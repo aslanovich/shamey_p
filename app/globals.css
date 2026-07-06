@@ -103,27 +103,6 @@ body {
   animation: floaty 3.6s ease-in-out infinite alternate;
 }
 
-/* Дрейф волны на кромке hero-вуали */
-@keyframes wave-drift {
-  to { transform: translateX(-50%); }
-}
-.wave-track {
-  display: flex;
-  width: 200%;
-  height: 100%;
-  animation: wave-drift 14s linear infinite;
-}
-.wave-track--slow {
-  animation-duration: 22s;
-  animation-direction: reverse;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .wave-track {
-    animation: none;
-  }
-}
-
 /* Бесконечная карусель отзывов */
 @keyframes marquee {
   to { transform: translateX(-50%); }
