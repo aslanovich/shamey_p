@@ -5,19 +5,17 @@ import { useEffect, useRef } from "react";
 import { TG_URL } from "@/lib/site";
 
 /**
- * Финальный CTA: два слоя фона плавно двигаются относительно
- * друг друга за курсором (mouse-параллакс с инерцией).
+ * Финальный CTA по макету 170:5368: лавандовая карточка,
+ * градиентный мазок с mouse-параллаксом (без фото).
  */
 export default function FinalCta() {
   const cardRef = useRef<HTMLDivElement>(null);
-  const bgRef = useRef<HTMLDivElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
+  const smearRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const card = cardRef.current;
-    const bg = bgRef.current;
-    const overlay = overlayRef.current;
-    if (!card || !bg || !overlay) return;
+    const smear = smearRef.current;
+    if (!card || !smear) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let targetX = 0;
@@ -27,11 +25,9 @@ export default function FinalCta() {
     let raf = 0;
 
     const loop = () => {
-      // плавная инерция
       curX += (targetX - curX) * 0.06;
       curY += (targetY - curY) * 0.06;
-      bg.style.transform = `translate3d(${curX * 14}px, ${curY * 10}px, 0) scale(1.06)`;
-      overlay.style.transform = `translate3d(${curX * -22}px, ${curY * -16}px, 0) scale(1.08)`;
+      smear.style.transform = `translate3d(${curX * 24}px, ${curY * 18}px, 0) scale(1.1)`;
       raf = requestAnimationFrame(loop);
     };
 
@@ -61,16 +57,8 @@ export default function FinalCta() {
         ref={cardRef}
         className="relative mx-auto min-h-[420px] max-w-5xl overflow-hidden rounded-[48px] bg-lavender-card"
       >
-        <div ref={bgRef} className="absolute inset-0 will-change-transform">
-          <Image
-            src="/cta_bg_image_1.png"
-            alt=""
-            fill
-            sizes="(min-width: 1024px) 1024px, 100vw"
-            className="object-cover"
-          />
-        </div>
-        <div ref={overlayRef} className="absolute inset-0 will-change-transform">
+        {/* Градиентный мазок с параллаксом за курсором */}
+        <div ref={smearRef} className="absolute inset-0 will-change-transform">
           <Image
             src="/cta_bg_image_2_overlay.png"
             alt=""

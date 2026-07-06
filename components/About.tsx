@@ -23,9 +23,12 @@ export default function About() {
           </p>
         </div>
 
-        <ul className="mt-9 flex flex-wrap justify-center gap-2">
+        <ul className="mt-9 flex flex-wrap justify-center gap-3">
           {FACTS.map((fact) => (
-            <li key={fact} className="rounded-full bg-white px-5 py-2.5 text-sm">
+            <li
+              key={fact}
+              className="rounded-full bg-lavender-card p-4 text-center text-lg leading-[1.4]"
+            >
               {fact}
             </li>
           ))}
