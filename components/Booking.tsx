@@ -12,13 +12,16 @@ import { useEffect } from "react";
  * Занятые слоты скрываются автоматически: Cal.com читает
  * подключённый календарь и показывает только свободное время.
  */
-const CAL_LINK = "your-username/session";
+const CAL_LINK = "shamay/booking";
 const NAMESPACE = "session";
+// Аккаунт живёт на европейском инстансе Cal.eu — поэтому свой origin
+const CAL_ORIGIN = "https://app.cal.eu";
+const EMBED_JS = "https://app.cal.eu/embed/embed.js";
 
 export default function Booking() {
   useEffect(() => {
     (async () => {
-      const cal = await getCalApi({ namespace: NAMESPACE });
+      const cal = await getCalApi({ namespace: NAMESPACE, embedJsUrl: EMBED_JS });
       cal("ui", {
         styles: { branding: { brandColor: "#1c137c" } },
         hideEventTypeDetails: false,
@@ -41,6 +44,8 @@ export default function Booking() {
           <Cal
             namespace={NAMESPACE}
             calLink={CAL_LINK}
+            calOrigin={CAL_ORIGIN}
+            embedJsUrl={EMBED_JS}
             style={{ width: "100%", height: "100%", minHeight: "620px" }}
             config={{ layout: "month_view", theme: "light" }}
           />
