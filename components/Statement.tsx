@@ -51,7 +51,7 @@ export default function Statement({ text }: { text: string }) {
       <p
         ref={ref}
         aria-label={text}
-        className="statement mx-auto max-w-4xl text-center [&_[data-ch]]:text-ink-50 [&_[data-ch]]:transition-colors [&_[data-ch]]:duration-500 [&_[data-ch].lit]:text-ink"
+        className="statement mx-auto max-w-4xl text-center [&_[data-ch]]:text-ink-15 [&_[data-ch]]:transition-colors [&_[data-ch]]:duration-500 [&_[data-ch].lit]:text-ink"
       >
         {words.map((word, wi) => (
           <span key={wi} aria-hidden>

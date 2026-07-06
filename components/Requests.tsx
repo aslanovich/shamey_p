@@ -61,7 +61,7 @@ export default function Requests() {
             <div
               key={group.title}
               className="reveal flex flex-col items-start rounded-[32px] bg-white p-7"
-              style={{ transitionDelay: `${i * 90}ms` }}
+              style={{ transitionDelay: `${i * 120}ms` }}
             >
               <Image src="/help_icon_1.svg" alt="" width={64} height={64} />
               <h3 className="pt-4 text-xl leading-[1.2]">{group.title}</h3>
@@ -81,7 +81,7 @@ export default function Requests() {
 
           <div
             className="reveal flex items-center rounded-[32px] bg-lavender-card p-7"
-            style={{ transitionDelay: `${GROUPS.length * 90}ms` }}
+            style={{ transitionDelay: `${GROUPS.length * 120}ms` }}
           >
             <p className="text-xl leading-[1.3]">
               Не обязательно заранее понимать, как правильно назвать свою

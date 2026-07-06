@@ -33,15 +33,19 @@ const REVIEWS = [
   },
 ];
 
+/** «Катя Р.» → «К*** Р.» — первая буква имени, остальные скрыты */
+function maskName(name: string) {
+  const [first, ...rest] = name.split(" ");
+  const masked = first[0] + "*".repeat(Math.max(first.length - 1, 2));
+  return [masked, ...rest].join(" ");
+}
+
 function Card({ review }: { review: (typeof REVIEWS)[number] }) {
   return (
     <div className="flex w-[300px] shrink-0 flex-col gap-6 rounded-[24px] bg-white p-8">
       <div>
-        <p
-          className="w-fit text-lg leading-[1.25] [filter:url(#pixelate-name)]"
-          aria-label="Имя скрыто"
-        >
-          {review.name}
+        <p className="text-lg leading-[1.25]" aria-label="Имя скрыто">
+          {maskName(review.name)}
         </p>
         <p className="text-lg leading-[1.25] text-ink-50">{review.meta}</p>
       </div>
@@ -66,17 +70,6 @@ function Card({ review }: { review: (typeof REVIEWS)[number] }) {
 export default function Reviews() {
   return (
     <section id="reviews" className="scroll-mt-24 overflow-hidden py-14 md:py-20">
-      {/* SVG-фильтр пикселизации имён */}
-      <svg width="0" height="0" aria-hidden className="absolute">
-        <filter id="pixelate-name" x="-5%" y="-5%" width="110%" height="110%">
-          <feFlood x="2" y="2" width="4" height="4" />
-          <feComposite width="8" height="8" />
-          <feTile result="tiles" />
-          <feComposite in="SourceGraphic" in2="tiles" operator="in" />
-          <feMorphology operator="dilate" radius="4" />
-        </filter>
-      </svg>
-
       <h2 className="display px-5 text-center">
         Что говорят
         <br />

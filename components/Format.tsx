@@ -1,3 +1,5 @@
+import Reveal from "@/components/Reveal";
+
 /** Градиентный «лепестковый» блоб — как иконка в макете */
 function Blob({ id }: { id: string }) {
   return (
@@ -27,7 +29,7 @@ const CARDS_TOP = [
 ];
 
 const CARDS_BOTTOM = [
-  { big: "1 час", label: ["длительность", "сессии"] },
+  { big: "50 минут", label: ["длительность", "сессии"] },
   { big: "1500 р.", label: ["стоимость", "одной сессии"] },
 ];
 
@@ -37,11 +39,13 @@ export default function Format() {
       <div className="mx-auto max-w-4xl">
         <h2 className="display text-center">Формат</h2>
 
+        <Reveal>
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
-          {CARDS_TOP.map((card) => (
+          {CARDS_TOP.map((card, i) => (
             <div
               key={card.label}
-              className="flex flex-col items-center justify-center gap-6 rounded-[48px] bg-white py-8"
+              className="reveal flex flex-col items-center justify-center gap-6 rounded-[48px] bg-white py-8"
+              style={{ transitionDelay: `${i * 120}ms` }}
             >
               <Blob id={card.icon} />
               <p className="max-w-[228px] text-center text-xl leading-[1.25] md:text-2xl">
@@ -49,10 +53,11 @@ export default function Format() {
               </p>
             </div>
           ))}
-          {CARDS_BOTTOM.map((card) => (
+          {CARDS_BOTTOM.map((card, i) => (
             <div
               key={card.big}
-              className="flex flex-col items-center justify-center gap-6 rounded-[48px] bg-white py-8"
+              className="reveal flex flex-col items-center justify-center gap-6 rounded-[48px] bg-white py-8"
+              style={{ transitionDelay: `${(i + 2) * 120}ms` }}
             >
               <p className="text-5xl leading-none md:text-[64px] md:tracking-[-2.88px]">
                 {card.big}
@@ -67,16 +72,20 @@ export default function Format() {
         </div>
 
         {/* Горизонтальный блок: приложение для созвонов */}
-        <div className="mt-4 grid items-center gap-8 overflow-hidden rounded-[48px] bg-white p-8 md:mt-6 md:grid-cols-2 md:p-12">
+        <div
+          className="reveal mt-4 grid items-center gap-8 overflow-hidden rounded-[48px] bg-white p-8 md:mt-6 md:grid-cols-2 md:p-12"
+          style={{ transitionDelay: "480ms" }}
+        >
           <div>
             <h3 className="text-2xl leading-[1.15] md:text-3xl">
               Встречи проходят
-              <br />в Яндекс Телемосте
+              <br />
+              по видеосвязи
             </h3>
             <p className="mt-4 leading-[1.4] text-ink-50">
               Ничего устанавливать не нужно — созвон открывается в браузере
-              по ссылке, которая приходит перед сессией. Работает на
-              компьютере и телефоне.
+              по ссылке, которая придёт после записи. Работает на компьютере
+              и телефоне.
             </p>
           </div>
 
@@ -104,6 +113,7 @@ export default function Format() {
             </div>
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   );

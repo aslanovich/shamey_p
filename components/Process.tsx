@@ -1,3 +1,5 @@
+import Reveal from "@/components/Reveal";
+
 const STEPS = [
   {
     n: "1",
@@ -31,9 +33,13 @@ export default function Process() {
           правильные слова, стараться понравиться или сразу рассказывать всё.
         </p>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 md:gap-6">
-          {STEPS.map((step) => (
-            <div key={step.n} className="rounded-[32px] bg-white p-7">
+        <Reveal className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 md:gap-6">
+          {STEPS.map((step, i) => (
+            <div
+              key={step.n}
+              className="reveal rounded-[32px] bg-white p-7"
+              style={{ transitionDelay: `${i * 120}ms` }}
+            >
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-porcelain text-lg">
                 {step.n}
               </span>
@@ -43,7 +49,7 @@ export default function Process() {
               </p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

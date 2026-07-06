@@ -35,9 +35,9 @@ export default function Booking() {
       <div className="mx-auto max-w-5xl">
         <h2 className="heading text-center">Выберите удобное время</h2>
         <p className="mx-auto mt-5 max-w-2xl text-center leading-[1.35] text-ink-50">
-          Можно записаться на первую бесплатную встречу или выбрать время для
-          следующей консультации. Если сложно сформулировать запрос, в форме
-          достаточно написать: «Хочу разобраться в себе».
+          В календаре показано только свободное время. Если сложно
+          сформулировать запрос, в форме достаточно написать: «Хочу
+          разобраться в себе».
         </p>
 
         <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-[40px] bg-white">

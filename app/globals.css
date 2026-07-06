@@ -9,6 +9,7 @@
   /* Цвета */
   --color-ink: #1c137c;               /* заголовки, текст, бренд */
   --color-ink-50: rgba(28, 19, 124, 0.5);  /* вторичный текст */
+  --color-ink-15: rgba(28, 19, 124, 0.15); /* незакрашенный statement-текст */
   --color-ink-90: rgba(28, 19, 124, 0.9);  /* кнопки */
   --color-porcelain: #f6f6fa;         /* канва страницы */
   --color-hero: #fcfcfc;              /* фон первого экрана */
@@ -102,6 +103,27 @@ body {
   animation: floaty 3.6s ease-in-out infinite alternate;
 }
 
+/* Дрейф волны на кромке hero-вуали */
+@keyframes wave-drift {
+  to { transform: translateX(-50%); }
+}
+.wave-track {
+  display: flex;
+  width: 200%;
+  height: 100%;
+  animation: wave-drift 14s linear infinite;
+}
+.wave-track--slow {
+  animation-duration: 22s;
+  animation-direction: reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave-track {
+    animation: none;
+  }
+}
+
 /* Бесконечная карусель отзывов */
 @keyframes marquee {
   to { transform: translateX(-50%); }
@@ -167,7 +189,6 @@ body {
   justify-content: center;
   border-radius: 9999px;
   background: var(--color-frost);
-  border: 2px solid #fff;
   backdrop-filter: blur(12px);
   color: var(--color-ink);
   padding: 10px 24px;

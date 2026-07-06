@@ -1,46 +1,39 @@
 import Reveal from "@/components/Reveal";
 
-const POINTS = [
+/** «Исследуем» — по макету 170:5355: текст по центру, лавандовые пилюли строкой */
+const TAGS = [
+  "как делать свой выбор",
   "что вы чувствуете",
-  "какие потребности остаются незамеченными",
-  "где вы теряете контакт с собой",
   "почему ситуации повторяются",
   "как слышать себя",
-  "как делать свой выбор",
+  "где вы теряете контакт с собой",
+  "какие потребности остаются незамеченными",
 ];
 
 export default function Approach() {
   return (
     <section id="approach" className="scroll-mt-24 px-5 py-14 md:py-20">
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="heading">Как я работаю</h2>
+      <Reveal className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-md text-center">
+          <h2 className="heading">Исследуем</h2>
+          <p className="pt-6 text-lg leading-[1.4]">
+            Работаю в гештальт-подходе: он помогает замечать, что происходит
+            с вами сейчас — что вы чувствуете, чего хотите и чего избегаете.
+          </p>
+        </div>
 
-        <p className="mt-8 text-lg leading-[1.4]">
-          Работаю в гештальт-подходе: он помогает замечать, что происходит с
-          вами сейчас — что вы чувствуете, чего хотите и чего избегаете.
-        </p>
-
-        <p className="mt-5 text-ink-50">
-          Вместо вопроса «что со мной не так?» мы исследуем:
-        </p>
-
-        <Reveal>
-          <ul className="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-2.5">
-            {POINTS.map((point, i) => (
-              <li
-                key={point}
-                className="cloud-tag rounded-full bg-white px-5 py-2.5 text-sm"
-                style={{
-                  transitionDelay: `${i * 160}ms`,
-                  animationDelay: `${(i % 3) * 1.2}s`,
-                }}
-              >
-                {point}
-              </li>
-            ))}
-          </ul>
-        </Reveal>
-      </div>
+        <ul className="mt-12 flex flex-wrap items-center justify-center gap-3">
+          {TAGS.map((tag, i) => (
+            <li
+              key={tag}
+              className="cloud-tag rounded-full bg-lavender-card p-4 text-center text-lg leading-[1.4]"
+              style={{ transitionDelay: `${i * 120}ms` }}
+            >
+              {tag}
+            </li>
+          ))}
+        </ul>
+      </Reveal>
     </section>
   );
 }
