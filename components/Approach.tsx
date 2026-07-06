@@ -15,7 +15,7 @@ export default function Approach() {
     <section id="approach" className="scroll-mt-24 px-5 py-14 md:py-20">
       <Reveal className="mx-auto max-w-4xl">
         <div className="mx-auto max-w-md text-center">
-          <h2 className="heading">Исследуем</h2>
+          <h2 className="heading">Что мы исследуем вместе</h2>
           <p className="pt-6 text-lg leading-[1.4]">
             Работаю в гештальт-подходе: он помогает замечать, что происходит
             с вами сейчас — что вы чувствуете, чего хотите и чего избегаете.

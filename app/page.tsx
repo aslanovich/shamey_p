@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Statement from "@/components/Statement";
 import Requests from "@/components/Requests";
 import Process from "@/components/Process";
+import About from "@/components/About";
 import Approach from "@/components/Approach";
 import Format from "@/components/Format";
 import Pricing from "@/components/Pricing";
@@ -27,6 +28,7 @@ export default function Home() {
 
         <Statement text="Я не даю универсальных советов и не говорю, как вам правильно жить. Мы вместе ищем решения, которые подходят именно вам." />
 
+        <About />
         <Approach />
 
         <Statement text="Задача терапии — не сделать вас «правильным», а помочь лучше слышать себя и свободнее выбирать, как поступать." />
