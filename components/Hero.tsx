@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="bg-[linear-gradient(to_bottom,var(--color-hero)_0%,var(--color-hero)_65%,var(--color-porcelain)_100%)]"
+      className="flex min-h-screen flex-col bg-[linear-gradient(to_bottom,var(--color-hero)_0%,var(--color-hero)_65%,var(--color-porcelain)_100%)]"
     >
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-5 pt-28 text-center md:pt-32">
         <p className="text-lg md:text-xl">Гештальт-психолог</p>
@@ -41,15 +41,15 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Фото: чистое, без градиентов */}
-      <div className="relative z-0 mx-auto mt-5 w-full max-w-2xl px-5">
+      {/* Фото: чистое, прибито к низу экрана */}
+      <div className="relative z-0 mx-auto mt-auto flex w-full max-w-2xl items-end pt-5">
         <Image
           src="/hero_image.png"
           alt="Шамай Джандарова"
           width={1920}
           height={1492}
           priority
-          className="mx-auto h-auto w-full object-cover object-top"
+          className="mx-auto block h-auto w-full object-cover object-top"
         />
       </div>
     </section>
