@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+/*
+ * Токены сняты с фигма-макета (shamey_website_draft):
+ * индиго #1c137c на фарфоровом #f6f6fa, hero на #fcfcfc,
+ * Inter Medium с трекингом -0.045em, кнопки-пилюли rgba(28,19,124,0.9).
+ */
+@theme {
+  /* Цвета */
+  --color-ink: #1c137c;               /* заголовки, текст, бренд */
+  --color-ink-50: rgba(28, 19, 124, 0.5);  /* вторичный текст */
+  --color-ink-90: rgba(28, 19, 124, 0.9);  /* кнопки */
+  --color-porcelain: #f6f6fa;         /* канва страницы */
+  --color-hero: #fcfcfc;              /* фон первого экрана */
+  --color-bone: #f6f5f4;              /* hairline на FAQ-карте */
+  --color-lavender-card: #dfdff8;     /* фон финального CTA */
+  --color-frost: rgba(232, 232, 255, 0.5); /* кнопка в шапке */
+  --color-verified: #00bb76;          /* галочки-факты */
+
+  --font-body: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--color-porcelain);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+
+/* Заголовки секций — 80px в макете, скейлится вниз */
+.display {
+  font-weight: 500;
+  color: var(--color-ink);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  font-size: clamp(44px, 6.5vw, 80px);
+}
+
+/* Средний заголовок для длинных названий секций */
+.heading {
+  font-weight: 500;
+  color: var(--color-ink);
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  font-size: clamp(32px, 4vw, 48px);
+}
+
+/* Statement-блок — 48px в макете */
+.statement {
+  font-weight: 500;
+  color: var(--color-ink);
+  line-height: 1.25;
+  letter-spacing: -0.045em;
+  font-size: clamp(24px, 3.2vw, 48px);
+}
+
+/* Плавное появление блоков при скролле (стаггер — через transition-delay) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* «Облачное» появление тегов: возникают и слегка плывут */
+.cloud-tag {
+  opacity: 0;
+  transform: translateY(16px) scale(0.92);
+  filter: blur(6px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.9s ease;
+}
+.cloud-tag.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+@keyframes floaty {
+  from { translate: 0 0; }
+  to { translate: 0 -7px; }
+}
+.cloud-tag.is-visible {
+  animation: floaty 3.6s ease-in-out infinite alternate;
+}
+
+/* Бесконечная карусель отзывов */
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .cloud-tag {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+    animation: none;
+  }
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Кнопки-пилюли */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--color-ink-90);
+  color: #fff;
+  padding: 16px 32px;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  transition: background-color 0.15s ease;
+}
+.btn-primary:hover {
+  background: var(--color-ink);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: #fff;
+  color: var(--color-ink);
+  padding: 16px 32px;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  transition: background-color 0.15s ease;
+}
+.btn-ghost:hover {
+  background: var(--color-frost);
+}
+
+/* Матовая кнопка из шапки макета */
+.btn-frost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--color-frost);
+  border: 2px solid #fff;
+  backdrop-filter: blur(12px);
+  color: var(--color-ink);
+  padding: 10px 24px;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: -0.045em;
+  transition: background-color 0.15s ease;
+}
+.btn-frost:hover {
+  background: rgba(232, 232, 255, 0.85);
+}
