@@ -8,7 +8,7 @@ import Approach from "@/components/Approach";
 import Format from "@/components/Format";
 import Pricing from "@/components/Pricing";
 // import Reviews from "@/components/Reviews"; // вернуть вместе с блоком отзывов
-import Booking from "@/components/Booking";
+// import Booking from "@/components/Booking"; // вернём с кастомным календарём
 import Faq from "@/components/Faq";
 import FinalCta from "@/components/FinalCta";
 import Footer from "@/components/Footer";
@@ -36,7 +36,7 @@ export default function Home() {
         <Pricing />
         {/* Отзывы скрыты до появления реальных: верни <Reviews />, когда будут */}
         {/* <Reviews /> */}
-        <Booking />
+        {/* <Booking /> — временно скрыт, будет кастомный календарь на Cal API */}
         <Faq />
         <FinalCta />
       </main>

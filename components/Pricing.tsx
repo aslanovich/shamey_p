@@ -77,7 +77,9 @@ export default function Pricing() {
                 ))}
               </ul>
               <a
-                href="#booking"
+                href="https://t.me/shhamey"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`mt-auto inline-flex items-center justify-center rounded-full px-8 py-3.5 font-normal transition-colors ${
                   plan.featured
                     ? "bg-white text-ink hover:bg-porcelain"

@@ -27,16 +27,14 @@ export default function Hero() {
 
         {/* Кнопки — по макету 170:5363 */}
         <div className="mt-7 flex items-stretch gap-2.5">
-          <a href="#booking" className="btn-primary md:text-xl md:tracking-[-0.9px]">
-            Записаться
-          </a>
+          {/* пока календаря нет — запись через Telegram */}
           <a
             href={TG_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-full bg-lavender-card/90 px-8 py-4 font-normal text-ink transition-colors hover:bg-lavender-card md:text-xl md:tracking-[-0.9px]"
+            className="btn-primary md:text-xl md:tracking-[-0.9px]"
           >
-            Телеграм
+            Записаться
           </a>
         </div>
       </div>
