@@ -42,7 +42,7 @@ export default function Pricing() {
               style={{ transitionDelay: `${i * 120}ms` }}
             >
               {plan.badge && (
-                <span className="absolute right-6 top-6 rounded-full bg-white/15 px-4 py-1.5 text-sm font-normal text-white">
+                <span className="absolute right-6 top-6 hidden rounded-full bg-white/15 px-4 py-1.5 text-sm font-normal text-white md:inline-flex">
                   {plan.badge}
                 </span>
               )}

@@ -14,7 +14,6 @@ export default function Footer() {
               Политика конфиденциальности
             </a>
           </div>
-          <p>Задизайнено — kerrrrrim</p>
         </div>
       </div>
     </footer>
