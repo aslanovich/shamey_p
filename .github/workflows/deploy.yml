@@ -1,0 +1,45 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {} # ручной запуск из вкладки Actions
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install & build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H 193.233.232.92 >> ~/.ssh/known_hosts
+
+      - name: Backup previous release
+        run: |
+          ssh root@193.233.232.92 "rm -rf /var/www/shamey.ru.backup && cp -r /var/www/shamey.ru /var/www/shamey.ru.backup || true"
+
+      - name: Upload build
+        run: |
+          rsync -az --delete out/ root@193.233.232.92:/var/www/shamey.ru/
+
+      - name: Fix permissions & reload nginx
+        run: |
+          ssh root@193.233.232.92 "chown -R www-data:www-data /var/www/shamey.ru && find /var/www/shamey.ru -type d -exec chmod 755 {} \; && find /var/www/shamey.ru -type f -exec chmod 644 {} \; && nginx -t && systemctl reload nginx"
