@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 
+/* Иконки — по макету 184:2; отрисованы вручную, лежат в public/icons/.
+   Для точного соответствия экспортни из фигмы поверх с теми же именами. */
 const GROUPS = [
   {
+    icon: "/icons/cometome-1.svg",
     title: "Самореализация и поиск себя",
     items: [
       "кажется, что вы не на своём месте",
@@ -12,6 +15,7 @@ const GROUPS = [
     ],
   },
   {
+    icon: "/icons/cometome-2.svg",
     title: "Самооценка и отношение к себе",
     items: [
       "часто сомневаетесь в себе",
@@ -21,6 +25,7 @@ const GROUPS = [
     ],
   },
   {
+    icon: "/icons/cometome-3.svg",
     title: "Тревога и эмоциональное напряжение",
     items: [
       "не получается расслабиться",
@@ -30,6 +35,7 @@ const GROUPS = [
     ],
   },
   {
+    icon: "/icons/cometome-4.svg",
     title: "Отношения",
     items: [
       "возникают сложности в отношениях с партнёром",
@@ -40,6 +46,7 @@ const GROUPS = [
     ],
   },
   {
+    icon: "/icons/cometome-5.svg",
     title: "Одиночество и внутренняя пустота",
     items: [
       "чувствуете себя одиноко даже рядом с людьми",
@@ -63,7 +70,7 @@ export default function Requests() {
               className="reveal flex flex-col items-start rounded-[32px] bg-white p-7"
               style={{ transitionDelay: `${i * 120}ms` }}
             >
-              <Image src="/help_icon_1.svg" alt="" width={64} height={64} />
+              <Image src={group.icon} alt="" width={64} height={64} />
               <h3 className="pt-4 text-xl leading-[1.2]">{group.title}</h3>
               <ul className="pt-4">
                 {group.items.map((item) => (
@@ -79,11 +86,13 @@ export default function Requests() {
             </div>
           ))}
 
+          {/* Последняя карточка — по макету: иконка и текст по центру */}
           <div
-            className="reveal flex items-center rounded-[32px] bg-lavender-card p-7"
+            className="reveal flex flex-col items-center justify-center gap-6 rounded-[32px] bg-lavender-card p-7 text-center"
             style={{ transitionDelay: `${GROUPS.length * 120}ms` }}
           >
-            <p className="text-xl leading-[1.3]">
+            <Image src="/icons/cometome-6.svg" alt="" width={64} height={64} />
+            <p className="max-w-[270px] text-xl leading-[1.3]">
               Не обязательно заранее понимать, как правильно назвать свою
               проблему. Мы можем начать с того, что сейчас беспокоит сильнее
               всего.

@@ -1,31 +1,11 @@
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 
-/** Градиентный «лепестковый» блоб — как иконка в макете */
-function Blob({ id }: { id: string }) {
-  return (
-    <svg width="110" height="112" viewBox="0 0 110 112" fill="none" aria-hidden>
-      <defs>
-        <linearGradient id={id} x1="8" y1="98" x2="102" y2="14" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#667fff" />
-          <stop offset="0.5" stopColor="#cea2ff" />
-          <stop offset="1" stopColor="#ff85b1" />
-        </linearGradient>
-        <filter id={`${id}-soft`} x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="2.5" />
-        </filter>
-      </defs>
-      <path
-        d="M55 8c12 0 20 8 20 20 0 2.6-.5 5-1.3 7.3 2.2-.8 4.7-1.3 7.3-1.3 12 0 21 9 21 21s-9 21-21 21c-2.6 0-5.1-.5-7.3-1.3.8 2.3 1.3 4.7 1.3 7.3 0 12-8 21-20 21s-20-9-20-21c0-2.6.5-5 1.3-7.3-2.2.8-4.7 1.3-7.3 1.3-12 0-21-9-21-21s9-21 21-21c2.6 0 5.1.5 7.3 1.3A20.8 20.8 0 0 1 35 28c0-12 8-20 20-20Z"
-        fill={`url(#${id})`}
-        filter={`url(#${id}-soft)`}
-      />
-    </svg>
-  );
-}
-
+/* Иконки из фигмы: положи экспорт в public/icons/format-1.svg и format-2.svg
+   (сейчас там заглушки-блобы) */
 const CARDS_TOP = [
-  { icon: "blob-a", label: "Индивидуальная консультация" },
-  { icon: "blob-b", label: "Онлайн-консультация" },
+  { icon: "/icons/format-1.svg", label: "Индивидуальная консультация" },
+  { icon: "/icons/format-2.svg", label: "Онлайн-консультация" },
 ];
 
 const CARDS_BOTTOM = [
@@ -47,7 +27,7 @@ export default function Format() {
               className="reveal flex flex-col items-center justify-center gap-6 rounded-[48px] bg-white py-8"
               style={{ transitionDelay: `${i * 120}ms` }}
             >
-              <Blob id={card.icon} />
+              <Image src={card.icon} alt="" width={110} height={112} />
               <p className="max-w-[228px] text-center text-xl leading-[1.25] md:text-2xl">
                 {card.label}
               </p>

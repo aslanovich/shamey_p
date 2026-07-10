@@ -1,4 +1,4 @@
-const ITEMS = [
+export const FAQ_ITEMS = [
   {
     q: "Нужно ли заранее формулировать запрос?",
     a: "Нет. Часто запрос становится понятнее уже в процессе первой встречи.",
@@ -47,11 +47,11 @@ export default function Faq() {
           </h2>
 
           <div>
-            {ITEMS.map((item, i) => (
+            {FAQ_ITEMS.map((item, i) => (
               <details
                 key={item.q}
                 className={`group py-5 ${
-                  i < ITEMS.length - 1 ? "border-b border-[rgba(41,40,36,0.1)]" : ""
+                  i < FAQ_ITEMS.length - 1 ? "border-b border-[rgba(41,40,36,0.1)]" : ""
                 }`}
               >
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-lg leading-[1.25] md:text-xl marker:content-none [&::-webkit-details-marker]:hidden">

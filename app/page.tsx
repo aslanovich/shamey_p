@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import JsonLd from "@/components/JsonLd";
 import Hero from "@/components/Hero";
 import Statement from "@/components/Statement";
 import Requests from "@/components/Requests";
@@ -16,6 +17,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
+      <JsonLd />
       <Header />
       <main>
         <Hero />

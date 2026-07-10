@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -9,16 +9,65 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const SITE_URL = "https://shamey.ru";
+const TITLE = "Шамай Джандарова — гештальт-психолог, онлайн-консультации";
+const DESCRIPTION =
+  "Шамай Джандарова — гештальт-психолог. Индивидуальные онлайн-консультации для взрослых: тревога, самооценка, отношения, выгорание, поиск себя. Сессия 50 минут — 1500 ₽. Запись онлайн.";
+
 export const metadata: Metadata = {
-  title: "Джандарова Шамай — гештальт-психолог",
-  description:
-    "Помогаю разобраться в себе, снизить тревогу и найти внутреннюю опору. Онлайн-консультации.",
-  openGraph: {
-    title: "Джандарова Шамай — гештальт-психолог",
-    description:
-      "Онлайн-консультации. Можно прийти без точного запроса.",
-    type: "website",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: "%s — Шамай Джандарова",
   },
+  description: DESCRIPTION,
+  keywords: [
+    "психолог онлайн",
+    "гештальт-терапевт",
+    "гештальт-психолог",
+    "консультация психолога",
+    "психолог для взрослых",
+    "тревога",
+    "самооценка",
+    "отношения",
+    "эмоциональное выгорание",
+    "Шамай Джандарова",
+    "Shamey",
+  ],
+  authors: [{ name: "Шамай Джандарова", url: SITE_URL }],
+  creator: "Шамай Джандарова",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Shamey — Шамай Джандарова",
+    locale: "ru_RU",
+    title: TITLE,
+    description:
+      "Онлайн-консультации гештальт-психолога. Можно прийти без точного запроса — разберёмся вместе. 50 минут, 1500 ₽.",
+    // TODO: og-обложка — добавить public/og.png (1200×630) и раскомментировать
+    // images: [{ url: "/og.png", width: 1200, height: 630, alt: "Шамай Джандарова — гештальт-психолог" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#f6f6fa",
 };
 
 export default function RootLayout({
