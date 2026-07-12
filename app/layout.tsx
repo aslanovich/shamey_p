@@ -40,10 +40,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-    ],
+    // favicon.ico — мультиразмерный (16–256), крупные png
+    // дополнительно в manifest.webmanifest для Android/PWA
+    icon: [{ url: "/favicon.ico", sizes: "any" }],
     apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.webmanifest",
@@ -68,7 +67,7 @@ export const metadata: Metadata = {
       {
         url: "/og.png",
         width: 1200,
-        height: 630,
+        height: 640,
         alt: "Шамай Джандарова — гештальт-психолог",
       },
     ],
